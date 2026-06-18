@@ -2,7 +2,76 @@
   padding: 100px 80px 40px;
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
+
+/* =============================================
+   ANTI-GRAVITY FLOATING ORBS
+   ============================================= */
+
+.floatingOrb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 0;
+}
+
+.orb1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+  top: 10%;
+  left: -5%;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.07), transparent 70%);
+  top: 30%;
+  right: -3%;
+  animation: orbFloat 10s ease-in-out infinite 2s;
+}
+
+.orb3 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.06), transparent 70%);
+  bottom: 30%;
+  left: 15%;
+  animation: orbFloat 7s ease-in-out infinite 1s;
+}
+
+.orb4 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.05), transparent 70%);
+  bottom: 10%;
+  right: 10%;
+  animation: orbFloat 9s ease-in-out infinite 3s;
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-10px) scale(0.98);
+  }
+  75% {
+    transform: translateY(-25px) scale(1.03);
+  }
+}
+
+/* =============================================
+   CONTACT TOP
+   ============================================= */
 
 .contactTop {
   display: flex;
@@ -10,6 +79,8 @@
   justify-content: space-between;
   gap: 60px;
   margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaArea {
@@ -103,10 +174,15 @@
   transform: translateY(-2px);
 }
 
-/* Footer */
+/* =============================================
+   FOOTER
+   ============================================= */
+
 .footer {
   border-top: 1px solid var(--border-light);
   padding: 32px 0 0;
+  position: relative;
+  z-index: 1;
 }
 
 .footerTop {
@@ -160,6 +236,75 @@
   color: var(--text-tertiary);
 }
 
+/* =============================================
+   SLIDESHOW HUGE TEXT
+   ============================================= */
+
+.hugeTextContainer {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  padding-bottom: 20px;
+  perspective: 800px;
+}
+
+.hugeTextSlideshow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: clamp(5rem, 15vw, 15rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.hugeText {
+  font-size: clamp(3rem, 10vw, 10rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  white-space: nowrap;
+  margin-bottom: 0;
+  will-change: transform, opacity;
+  text-align: center;
+  color: #000000;
+}
+
+/* Shimmer line beneath slideshow text */
+.shimmerLine {
+  width: 60%;
+  max-width: 600px;
+  height: 2px;
+  margin-top: 20px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border) 20%,
+    var(--text-tertiary) 50%,
+    var(--border) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
 @media (max-width: 768px) {
   .section {
     padding: 60px 20px 20px;
@@ -194,23 +339,20 @@
     align-items: flex-start;
     gap: 8px;
   }
-}
 
-.hugeTextContainer {
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  margin-top: 60px;
-  padding-bottom: 20px;
-}
+  .floatingOrb {
+    display: none;
+  }
 
-.hugeText {
-  font-size: clamp(4rem, 14vw, 14rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text-primary);
-  line-height: 0.85;
-  white-space: nowrap;
-  margin-bottom: 0;
+  .hugeTextSlideshow {
+    min-height: clamp(3rem, 10vw, 6rem);
+  }
+
+  .hugeText {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+
+  .shimmerLine {
+    width: 80%;
+  }
 }

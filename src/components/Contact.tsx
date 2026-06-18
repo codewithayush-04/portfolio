@@ -1,16 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
 import styles from "./Contact.module.css";
 
+const slideshowTexts = [
+  { text: "Ayush Gupta" },
+  { text: "Web Developer" },
+  { text: "Web Designer" },
+  { text: "Problem Solver" },
+  { text: "Ayush Gupta" },
+];
+
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Anti-gravity transforms for floating elements
+  const floatY1 = useTransform(scrollYProgress, [0.3, 0.8], [0, -60]);
+  const floatY2 = useTransform(scrollYProgress, [0.3, 0.8], [0, -40]);
+  const floatY3 = useTransform(scrollYProgress, [0.2, 0.7], [0, -80]);
+  const floatRotate1 = useTransform(scrollYProgress, [0.3, 0.8], [0, 15]);
+  const floatRotate2 = useTransform(scrollYProgress, [0.3, 0.8], [0, -10]);
+  const floatScale = useTransform(scrollYProgress, [0.3, 0.6], [1, 1.05]);
+  const hugeTextY = useTransform(scrollYProgress, [0.5, 1], [0, -30]);
+  const hugeTextScale = useTransform(scrollYProgress, [0.5, 1], [1, 1.08]);
+
+  // Slideshow timer
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideshowTexts.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className={styles.section} id="contact">
-      <div className={styles.contactTop}>
+    <section className={styles.section} id="contact" ref={sectionRef}>
+      {/* Anti-gravity floating particles */}
+      <motion.div
+        className={`${styles.floatingOrb} ${styles.orb1}`}
+        style={{ y: floatY1, rotate: floatRotate1 }}
+      />
+      <motion.div
+        className={`${styles.floatingOrb} ${styles.orb2}`}
+        style={{ y: floatY3, rotate: floatRotate2 }}
+      />
+      <motion.div
+        className={`${styles.floatingOrb} ${styles.orb3}`}
+        style={{ y: floatY2 }}
+      />
+      <motion.div
+        className={`${styles.floatingOrb} ${styles.orb4}`}
+        style={{ y: floatY1, rotate: floatRotate2 }}
+      />
+
+      <motion.div className={styles.contactTop} style={{ scale: floatScale }}>
         <motion.div
           className={styles.ctaArea}
           initial={{ opacity: 0, x: -30 }}
@@ -82,7 +135,7 @@ export default function Contact() {
             </a>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Footer */}
       <footer className={styles.footer}>
@@ -122,9 +175,32 @@ export default function Contact() {
           </span>
         </div>
 
-        <div className={styles.hugeTextContainer}>
-          <h1 className={styles.hugeText}>Ayush Gupta</h1>
-        </div>
+        {/* Slideshow Huge Text */}
+        <motion.div
+          className={styles.hugeTextContainer}
+          style={{ y: hugeTextY, scale: hugeTextScale }}
+        >
+          <div className={styles.hugeTextSlideshow}>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={currentSlide}
+                className={styles.hugeText}
+                style={{ color: '#000000' }}
+                initial={{ y: 80, opacity: 0, rotateX: -15 }}
+                animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                exit={{ y: -80, opacity: 0, rotateX: 15 }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {slideshowTexts[currentSlide].text}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
+          {/* Shimmer line beneath text */}
+          <div className={styles.shimmerLine} />
+        </motion.div>
       </footer>
     </section>
   );
