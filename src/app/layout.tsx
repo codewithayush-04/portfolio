@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import AntigravityCursor from "@/components/AntigravityCursor";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -28,7 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={outfit.variable}>
-      <body>{children}</body>
+      <body>
+        <AntigravityCursor />
+        {children}
+      </body>
     </html>
   );
 }
