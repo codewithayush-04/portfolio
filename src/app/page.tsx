@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Philosophy from "@/components/Philosophy";
 import Clients from "@/components/Clients";
 import Impact from "@/components/Impact";
 import Projects from "@/components/Projects";
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Philosophy />
         <Clients />
         <Impact />
         <Projects />
