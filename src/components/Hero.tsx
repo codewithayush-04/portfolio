@@ -64,8 +64,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
           style={{ y: profileY, scale: profileScale }}
         >
-          <img
-            src="/WhatsApp Image 2026-06-14 at 11.20.24.jpeg"
+          <img 
+            src="/WhatsApp Image 2026-06-26 at 10.31.38.jpeg"
             alt="Ayush Gupta"
             className={styles.profileImage}
             width={380}
