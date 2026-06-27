@@ -4,6 +4,7 @@ import Philosophy from "@/components/Philosophy";
 import Clients from "@/components/Clients";
 import Impact from "@/components/Impact";
 import Projects from "@/components/Projects";
+import Internship from "@/components/Internship";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Clients />
         <Impact />
         <Projects />
+        <Internship />
         <Contact />
       </main>
     </>

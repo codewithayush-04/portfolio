@@ -1,0 +1,372 @@
+.section {
+  padding: var(--section-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* ========================================
+   INTERNSHIP CARD
+   ======================================== */
+
+.internshipCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.internshipCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #10b981);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.internshipCard:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   COMPANY HEADER
+   ======================================== */
+
+.companyHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.companyIconWrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.companyName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+
+.divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 32px 0;
+}
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.internshipDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+/* ========================================
+   TASK CARDS
+   ======================================== */
+
+.tasksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.taskCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  transition: transform var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    border-color var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.taskCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border);
+}
+
+.taskNumber {
+  margin-bottom: 16px;
+}
+
+.taskNumber span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  padding: 4px 10px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+}
+
+.taskTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.taskDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.taskFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 4px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.taskCard:hover .tag {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.taskLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  transition: background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.taskLink:hover {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   DOCUMENTS
+   ======================================== */
+
+.documents {
+  border-top: 1px solid var(--border-light);
+  padding-top: 32px;
+}
+
+.documentsLabel {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+}
+
+.documentLinks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.documentLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: transform var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    border-color var(--transition-smooth);
+  flex: 1;
+  min-width: 220px;
+}
+
+.documentLink:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--doc-accent, var(--border));
+}
+
+.documentIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--doc-accent, #6366f1) 12%, transparent);
+  color: var(--doc-accent, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+
+.documentLink:hover .documentIcon {
+  background: color-mix(in srgb, var(--doc-accent, #6366f1) 20%, transparent);
+}
+
+.documentText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.documentTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.documentHint {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+}
+
+.documentArrow {
+  color: var(--text-tertiary);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.documentLink:hover .documentArrow {
+  transform: translate(2px, -2px);
+  color: var(--doc-accent, var(--text-primary));
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile);
+  }
+
+  .internshipCard {
+    padding: 28px 20px;
+  }
+
+  .companyHeader {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tasksGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .taskCard {
+    padding: 24px;
+  }
+
+  .taskFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .documentLinks {
+    flex-direction: column;
+  }
+
+  .documentLink {
+    min-width: unset;
+  }
+}
