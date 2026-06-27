@@ -11,14 +11,14 @@ const tasks = [
     description:
       "Built a fully functional task management app with Create, Read, Update & Delete operations, featuring a clean UI and persistent state management.",
     tags: ["React.js", "CRUD", "State Management"],
-    link: "#", // Replace with live project link
+    link: "https://github.com/codewithayush-04/task-2-", // Replace with live project link
   },
   {
     title: "Modern Profile Page",
     description:
       "Designed and developed a modern, responsive profile page with sleek aesthetics, smooth animations, and component-driven architecture.",
     tags: ["React.js", "CSS", "Responsive Design"],
-    link: "#", // Replace with live project link
+    link: "https://github.com/codewithayush-04/task1", // Replace with live project link
   },
 ];
 
