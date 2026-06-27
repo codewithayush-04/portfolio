@@ -11,7 +11,8 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax transforms driven by scroll
+  // Parallax transforms driven by scroll like antigravity
+  
   const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const nameY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const nameOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
@@ -70,7 +71,7 @@ export default function Hero() {
             className={styles.profileImage}
             width={380}
             height={507}
-          />
+          /> 
         </motion.div>
       </div>
 
